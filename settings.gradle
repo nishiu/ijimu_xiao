@@ -1,0 +1,4 @@
+include ':app'
+include ':android_game'
+project(':android_game').projectDir = new File('C:/AndroidWorkspace/android_game')
+include ':android_game:game'

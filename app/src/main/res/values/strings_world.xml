@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prop_name_bomb">bomb</string>
+    <string name="prop_name_paint">paint</string>
+    <string name="prop_name_refresh">refresh</string>
+    <string name="confirm_tips_exit">Are you sure you want to exit the game?</string>
+    <string name="confirm_tips_sure">yes</string>
+    <string name="confirm_tips_cancel">cancel</string>
+    <string name="progress_tips_exit">Exiting game...</string>
+    <string name="notice_buy_success">Props received successfully</string>
+    <string name="notice_buy_error">Failed to receive item: </string>
+    <string name="notice_buy_get_all">Get all props</string>
+    <string name="progress_tips_load">Load Game Recording...</string>
+    <string name="progress_tips_save">Save Game Progress...</string>
+    <string name="notice_restore_not">No game saves</string>
+    <string name="progress_tips_gift">Receiving gift pack...</string>
+    <string name="notice_gift_success">Gift bag received successfully</string>
+    <string name="notice_gift_error">Failed to receive gift package: </string>
+    <string name="notice_gift_cancel">Gift Pack Cancellation</string>
+    <string name="gift_name_reborn">Resurrection Pack</string>
+    <string name="gift_name_props5">Deluxe gift pack</string>
+    <string name="gift_name_props2">Growth Pack</string>
+    <string name="gift_name_bomb5">Bomb Pack</string>
+    <string name="gift_name_paint5">paint Gift Pack</string>
+    <string name="gift_name_refresh5">Spinning gift pack</string>
+    <string name="gift_name_card_draw">Flip Gift Pack</string>
+    <string name="gift_name_owed">Props Pack</string>
+    <string name="gift_name">Gift Pack</string>
+</resources>

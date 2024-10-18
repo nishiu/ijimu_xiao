@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pay_notice" formatted="false"><![CDATA[
+%s，马上领取只需<big>%s</big>元。
+信息费由合作伙伴代为收取，收费成功后运营商会发送短信到您的收件箱。
+客服热线:400-1015-551
+    ]]></string>
+</resources>
