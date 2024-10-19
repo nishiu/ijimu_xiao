@@ -3,6 +3,7 @@ package com.ijimu.android.xiao.view.game;
 import android.graphics.Color;
 
 import com.ijimu.android.game.BeanFactory;
+import com.ijimu.android.game.ContextHolder;
 import com.ijimu.android.game.display.DisplayContainer;
 import com.ijimu.android.game.display.DisplayObject;
 import com.ijimu.android.game.display.DisplayPort;

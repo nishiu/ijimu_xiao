@@ -71,7 +71,7 @@ public class MarketDialog extends DisplayContainer implements GameEventListener{
 			Gift gift = giftManager.getByType(MARKET_ITEMS.get(i));
 			DisplayObject item = createMarketItem(gift);
 			item.setX(5);
-			item.setY(80+i*120);
+			item.setY(80+i*110);
 			addChild(item);
 		}
 	}

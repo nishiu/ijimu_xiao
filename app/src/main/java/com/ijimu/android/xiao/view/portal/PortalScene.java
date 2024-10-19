@@ -111,7 +111,7 @@ public class PortalScene extends DisplayContainer{
 
 	private void createMenu(DisplayContainer pane, int bg, ClickListener clickListener) {
 		DisplayObject menu = new BaseButton();
-		menu.setWidth(225);
+		menu.setWidth(193);//224
 		menu.setHeight(71);
 		menu.setX(0);
 		menu.setY(pane.getChildCount()*(85));

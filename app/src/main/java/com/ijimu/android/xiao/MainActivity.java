@@ -8,10 +8,16 @@ import org.slf4j.impl.AndroidLogger;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.ijimu.android.game.BeanFactory;
 import com.ijimu.android.game.ContextHolder;
@@ -70,7 +76,10 @@ public class MainActivity extends Activity{
 		View surface = DisplayRoot.getInstance().getSurface();
 		ViewParent parent = surface.getParent();
 		if(parent!=null) ((ViewGroup)parent).removeView(surface);
-		setContentView(surface);
+		RelativeLayout rootView = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.activity_main,null);
+		ViewGroup gamePanel = rootView.findViewById(R.id.game_root);
+		gamePanel.addView(surface);
+		setContentView(rootView);
 	}
 	
 	@Override
