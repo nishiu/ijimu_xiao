@@ -12,11 +12,11 @@ android {
         }
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId "com.ijimu.android.xiao"
-        minSdkVersion 16
-        targetSdkVersion 33
+        minSdkVersion 26
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -48,11 +48,14 @@ android {
     }
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':topad')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation project(':android_game:game')
+    implementation project(':topad')
     testImplementation 'junit:junit:4.12'
 }
