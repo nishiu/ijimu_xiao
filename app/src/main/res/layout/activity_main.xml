@@ -11,12 +11,9 @@
         android:gravity="bottom"
         android:layout_above="@+id/banner"/>
 
-    <TextView
+    <FrameLayout
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="banner ad container"
-        android:gravity="center"
-        android:textSize="15sp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

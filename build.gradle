@@ -83,15 +83,6 @@ allprojects {
 
         mavenCentral()
     }
-    configurations.all {
-        resolutionStrategy {
-            force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
-            force "org.jetbrains.kotlin:kotlin-reflect:1.7.20"
-            force "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
-            force "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
-            force "org.jetbrains.kotlin:kotlin-stdlib:2.0.0"
-        }
-    }
 }
 
 task clean(type: Delete) {

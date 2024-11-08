@@ -1,24 +1,39 @@
 package com.ijimu.android.xiao;
 
+import static com.anythink.nativead.api.ATNativeImageView.TAG;
+import static com.ijimu.android.game.util.SystemUtils.dip2px;
+
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.impl.AndroidLogger;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.anythink.banner.api.ATBannerExListener;
+import com.anythink.banner.api.ATBannerView;
+import com.anythink.core.api.ATAdConst;
+import com.anythink.core.api.ATAdInfo;
+import com.anythink.core.api.ATNetworkConfirmInfo;
+import com.anythink.core.api.AdError;
 import com.ijimu.android.game.BeanFactory;
 import com.ijimu.android.game.ContextHolder;
 import com.ijimu.android.game.UIThread;
@@ -41,6 +56,9 @@ public class MainActivity extends Activity{
 
 	private GameWorld gameWorld;
 	private Collection<TrackPlugin> trackers;
+
+
+	private ATBannerView mBannerView;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -80,6 +98,79 @@ public class MainActivity extends Activity{
 		ViewGroup gamePanel = rootView.findViewById(R.id.game_root);
 		gamePanel.addView(surface);
 		setContentView(rootView);
+		UIThread.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+
+				initBanner(rootView);
+			}
+		},3000);
+	}
+
+	private void initBanner(View root){
+		FrameLayout adContainer = root.findViewById(R.id.banner);
+		ATBannerView mBannerView = new ATBannerView(this);
+		mBannerView.setPlacementId("n670cfbda6c587");
+
+		mBannerView.setBannerAdListener(new ATBannerExListener() {
+
+			@Override
+			public void onDeeplinkCallback(boolean isRefresh, ATAdInfo adInfo, boolean isSuccess) {
+				Log.i(TAG, "onDeeplinkCallback:" + adInfo.toString() + "--status:" + isSuccess);
+			}
+
+			@Override
+			public void onDownloadConfirm(Context context, ATAdInfo adInfo, ATNetworkConfirmInfo networkConfirmInfo) {
+				Log.i(TAG, "onDownloadConfirm:" + adInfo.toString() + " networkConfirmInfo:" + networkConfirmInfo);
+			}
+
+			@Override
+			public void onBannerLoaded() {
+				Log.i(TAG, "onBannerLoaded");
+			}
+
+			@Override
+			public void onBannerFailed(AdError adError) {
+				Log.i(TAG, "onBannerFailed: " + adError.getFullErrorInfo());
+			}
+
+			@Override
+			public void onBannerClicked(ATAdInfo entity) {
+				Log.i(TAG, "onBannerClicked:" + entity.toString());
+			}
+
+			@Override
+			public void onBannerShow(ATAdInfo entity) {
+				Log.i(TAG, "onBannerShow:" + entity.toString());
+			}
+
+			@Override
+			public void onBannerClose(ATAdInfo entity) {
+				Log.i(TAG, "onBannerClose:" + entity.toString());
+			}
+
+			@Override
+			public void onBannerAutoRefreshed(ATAdInfo entity) {
+				Log.i(TAG, "onBannerAutoRefreshed:" + entity.toString());
+			}
+
+			@Override
+			public void onBannerAutoRefreshFail(AdError adError) {
+				Log.i(TAG, "onBannerAutoRefreshFail: " + adError.getFullErrorInfo());
+			}
+		});
+
+//		mBannerView.setAdSourceStatusListener(new ATAdSourceStatusListenerImpl());
+//		mBannerView.setAdMultipleLoadedListener(new AdMultipleLoadedListener());
+		mBannerView.setVisibility(View.VISIBLE);
+		adContainer.addView(mBannerView,new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, adContainer.getLayoutParams().height));
+
+		int padding = dip2px(12);
+		Map<String, Object> localMap = new HashMap<>();
+		localMap.put(ATAdConst.KEY.AD_WIDTH, getResources().getDisplayMetrics().widthPixels - 2 * padding);
+		localMap.put(ATAdConst.KEY.AD_HEIGHT, dip2px(60));
+		mBannerView.setLocalExtra(localMap);
+		mBannerView.loadAd();
 	}
 	
 	@Override

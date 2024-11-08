@@ -1,6 +1,9 @@
 package com.ijimu.android.xiao;
 
 import android.app.Application;
+import android.content.Context;
+
+import androidx.multidex.MultiDex;
 
 import com.ijimu.android.ad.TopAdConfig;
 
@@ -15,5 +18,11 @@ public class BaseApplication extends Application {
         //n670cfbdb697ab reward
         //n670cfbdae53e7 insert
         //n670cfbda6c587 banner
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

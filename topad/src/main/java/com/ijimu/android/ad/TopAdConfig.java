@@ -57,14 +57,14 @@ public class TopAdConfig {
 
         ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
 //        ATSDK.setUseHTTP(true);
-        ATSDK.init(app, appId, appKey);
+//        ATSDK.init(app, appId, appKey);
 
-//        ATNetworkConfig atNetworkConfig = getAtNetworkConfig();
-//        ATSDK.init(this, appid, appKey, atNetworkConfig);
+        ATNetworkConfig atNetworkConfig = getAtNetworkConfig();
+        ATSDK.init(app, appId, appKey, atNetworkConfig);
     }
 
 
-    private ATNetworkConfig getAtNetworkConfig() {
+    private static ATNetworkConfig getAtNetworkConfig() {
         List<ATInitConfig> atInitConfigs = new ArrayList<>();
 
 //        ATInitConfig pangleATInitConfig = new PangleATInitConfig("8025677");
