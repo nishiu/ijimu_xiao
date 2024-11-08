@@ -13,43 +13,33 @@ buildscript {
             dirs 'libs'
         }
         //Anythink(Core)
-        maven {
-            url "https://jfrog.anythinktech.com/artifactory/overseas_sdk"
-        }
-
-        //Ironsource
-        maven {
-            url "https://android-sdk.is.com/"
-        }
-
-        //Pubnative
-        maven {
-            url "https://verve.jfrog.io/artifactory/verve-gradle-release"
-        }
-
-        //Pangle
-        maven {
-            url "https://artifact.bytedance.com/repository/pangle"
-        }
-
+        maven { url "https://jfrog.anythinktech.com/artifactory/overseas_sdk" }
         //Mintegral
-        maven {
-            url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea"
-        }
-
+        maven { url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" }
         //Chartboost
-        maven {
-            url "https://cboost.jfrog.io/artifactory/chartboost-ads"
-        }
-        maven {
-            url "https://cboost.jfrog.io/artifactory/chartboost-mediation"
-        }
+        maven { url "https://cboost.jfrog.io/artifactory/chartboost-ads" }
+        maven { url "https://cboost.jfrog.io/artifactory/chartboost-mediation" }
+        //Tapjoy
+        maven { url "https://sdk.tapjoy.com/" }
+        //Ironsource
+        maven { url "https://android-sdk.is.com/" }
+        //Appnext
+        maven { url "https://dl.appnext.com" }
+        //Nend
+        maven { url "https://fan-adn.github.io/nendSDK-Android-lib/library" }
+        //Maio
+        maven { url "https://imobile-maio.github.io/maven" }
+        //Ogury
+        maven { url "https://maven.ogury.co" }
+        //Huawei
+        maven { url "https://developer.huawei.com/repo/" }
+        //Pangle
+        maven { url "https://artifact.bytedance.com/repository/pangle" }
+        //Pubnative
+        maven { url "https://verve.jfrog.io/artifactory/verve-gradle-release" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "com.android.tools.build:gradle:7.2.2"
     }
 }
 
@@ -58,7 +48,6 @@ allprojects {
 
         google()
         maven { url 'https://jitpack.io'}
-
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
@@ -66,38 +55,41 @@ allprojects {
         flatDir {
             dirs 'libs'
         }
-
         //Anythink(Core)
-        maven {
-            url "https://jfrog.anythinktech.com/artifactory/overseas_sdk"
-        }
-
-        //Ironsource
-        maven {
-            url "https://android-sdk.is.com/"
-        }
-
-        //Pubnative
-        maven {
-            url "https://verve.jfrog.io/artifactory/verve-gradle-release"
-        }
-
-        //Pangle
-        maven {
-            url "https://artifact.bytedance.com/repository/pangle"
-        }
-
+        maven { url "https://jfrog.anythinktech.com/artifactory/overseas_sdk" }
         //Mintegral
-        maven {
-            url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea"
-        }
-
+        maven { url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" }
         //Chartboost
-        maven {
-            url "https://cboost.jfrog.io/artifactory/chartboost-ads"
-        }
-        maven {
-            url "https://cboost.jfrog.io/artifactory/chartboost-mediation"
+        maven { url "https://cboost.jfrog.io/artifactory/chartboost-ads" }
+        maven { url "https://cboost.jfrog.io/artifactory/chartboost-mediation" }
+        //Tapjoy
+        maven { url "https://sdk.tapjoy.com/" }
+        //Ironsource
+        maven { url "https://android-sdk.is.com/" }
+        //Appnext
+        maven { url "https://dl.appnext.com" }
+        //Nend
+        maven { url "https://fan-adn.github.io/nendSDK-Android-lib/library" }
+        //Maio
+        maven { url "https://imobile-maio.github.io/maven" }
+        //Ogury
+        maven { url "https://maven.ogury.co" }
+        //Huawei
+        maven { url "https://developer.huawei.com/repo/" }
+        //Pangle
+        maven { url "https://artifact.bytedance.com/repository/pangle" }
+        //Pubnative
+        maven { url "https://verve.jfrog.io/artifactory/verve-gradle-release" }
+
+        mavenCentral()
+    }
+    configurations.all {
+        resolutionStrategy {
+            force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
+            force "org.jetbrains.kotlin:kotlin-reflect:1.7.20"
+            force "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
+            force "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
+            force "org.jetbrains.kotlin:kotlin-stdlib:2.0.0"
         }
     }
 }

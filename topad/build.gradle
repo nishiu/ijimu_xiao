@@ -5,8 +5,6 @@ android {
     defaultConfig {
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -39,7 +37,27 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     testImplementation 'junit:junit:4.12'
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.20"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.0"
+
     api 'androidx.multidex:multidex:2.0.1'
+
+    //Nend
+    implementation ('androidx.preference:preference:1.1.1') {
+        exclude module: 'recyclerview'
+    }
+
+    //Unity Ads
+    implementation 'androidx.startup:startup-runtime:1.1.1'
+    implementation 'androidx.lifecycle:lifecycle-process:2.5.1'
+    implementation 'androidx.webkit:webkit:1.6.1'
+
+    implementation ('com.google.android.exoplayer:exoplayer:2.16.1'){
+        exclude module: 'recyclerview'
+    }
 
     //Anythink (Necessary)
     api "com.anythink.sdk:core:6.4.18"

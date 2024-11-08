@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
-
 android {
 
     signingConfigs {
         shl {
             keyAlias 'shl.android'
             keyPassword 'shl.android'
-            def storePath = "C:/AndroidWorkspace/shl.keystore"
+            def storePath = "D:/AndroidWorkspace/shl.keystore"
             storeFile file(storePath)
             storePassword 'shl.android'
         }
@@ -20,7 +19,20 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    //Helium
+    packagingOptions {
+        merge "META-INF/com.android.tools/proguard/coroutines.pro"
+        exclude "META-INF/*.kotlin_module"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,7 +40,7 @@ android {
 
             signingConfig = signingConfigs.shl
             applicationVariants.all { variant ->
-//                variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath+"/apk/v${versionName}/")
+                variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath+"/apk/v${versionName}/")
                 variant.outputs.all { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')){
@@ -38,13 +50,18 @@ android {
                 }
             }
         }
-//        debug {
-//            ndk {
-//                // 设置支持的SO库架构
-//                abiFilters 'arm64-v8a','armeabi-v7a','x86_64'
-//            }
-//            signingConfig = signingConfigs.shl
-//        }
+        debug {
+            ndk {
+                // 设置支持的SO库架构
+                abiFilters 'arm64-v8a','armeabi-v7a','x86_64'
+            }
+            signingConfig = signingConfigs.shl
+        }
+    }
+    flavorDimensions "channel"
+
+    productFlavors{
+        official { dimension 'channel' }
     }
 }
 
