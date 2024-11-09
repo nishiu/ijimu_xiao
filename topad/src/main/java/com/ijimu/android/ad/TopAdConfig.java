@@ -72,7 +72,7 @@ public class TopAdConfig {
         ATSDK.init(app, appId, appKey, atNetworkConfig);
         if(VersionUtil.isDebug()){
             ATSDK.setDebuggerConfig(app,ATDeviceUtils.getGaid(),new  ATDebuggerConfig.Builder(Chartboost_NETWORK).build());
-//            ATSDK.setDebuggerConfig(app, ATDeviceUtils.getGaid(), new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
+            ATSDK.setDebuggerConfig(app, ATDeviceUtils.getGaid(), new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
         }
 
     }

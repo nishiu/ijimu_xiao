@@ -2,6 +2,7 @@ package com.ijimu.android.ad;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,9 +15,10 @@ import com.anythink.core.api.ATAdInfo;
 import com.anythink.core.api.ATNativeAdCustomRender;
 import com.anythink.core.api.ATNativeAdInfo;
 import com.anythink.core.api.AdError;
-import com.anythink.interstitial.api.ATInterstitial;
 import com.anythink.interstitial.api.ATInterstitialAutoAd;
 import com.anythink.interstitial.api.ATInterstitialAutoLoadListener;
+import com.anythink.rewardvideo.api.ATRewardVideoAutoAd;
+import com.anythink.rewardvideo.api.ATRewardVideoAutoLoadListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,13 +26,13 @@ import java.util.Map;
 public abstract class AdActivity extends AppCompatActivity {
 
     private ATBannerView atBannerView;
-    private ATInterstitialAutoAd atInterstitialAutoAd;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    protected void initBanner(ViewGroup container){
+    protected void showBanner(ViewGroup container){
         if(container == null)return;
         container.removeAllViews();
         atBannerView = new ATBannerView(this);
@@ -52,19 +54,32 @@ public abstract class AdActivity extends AppCompatActivity {
             public void onInterstitialAutoLoaded(String s) {
                 ATInterstitialAutoAd.entryAdScenario(TopAdConfig.INSERT, "ijimu_insert");
                 if (ATInterstitialAutoAd.isAdReady(TopAdConfig.INSERT)) {
-
+                    ATInterstitialAutoAd.show(getActivity(),TopAdConfig.INSERT,null);
                 }
             }
 
             @Override
             public void onInterstitialAutoLoadFail(String s, AdError adError) {
-
+                Log.i(TopAdConfig.TAG,"onInterstitialAutoLoadFail : "+adError.getFullErrorInfo());
             }
         });
     }
 
     protected void showReward(){
+        ATRewardVideoAutoAd.init(this, new String[]{TopAdConfig.REWARD}, new ATRewardVideoAutoLoadListener() {
+            @Override
+            public void onRewardVideoAutoLoaded(String s) {
+                ATInterstitialAutoAd.entryAdScenario(TopAdConfig.REWARD,"ijimu_reward");
+                if(ATInterstitialAutoAd.isAdReady(TopAdConfig.REWARD)){
+                    ATInterstitialAutoAd.show(getActivity(),TopAdConfig.REWARD,null);
+                }
+            }
 
+            @Override
+            public void onRewardVideoAutoLoadFail(String s, AdError adError) {
+                Log.i(TopAdConfig.TAG,"onRewardVideoAutoLoadFail : "+adError.getFullErrorInfo());
+            }
+        });
     }
 
     public static class NativeAdCustomRender implements ATNativeAdCustomRender {
@@ -86,6 +101,10 @@ public abstract class AdActivity extends AppCompatActivity {
             atBannerView.destroy();
             atBannerView = null;
         }
+    }
+
+    protected AppCompatActivity getActivity(){
+        return this;
     }
 
     public int dip2px(int dipValue) {

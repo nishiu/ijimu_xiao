@@ -1,40 +1,19 @@
 package com.ijimu.android.xiao;
 
-import static com.anythink.nativead.api.ATNativeImageView.TAG;
-import static com.ijimu.android.game.util.SystemUtils.dip2px;
-
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.impl.AndroidLogger;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
-import com.anythink.banner.api.ATBannerExListener;
-import com.anythink.banner.api.ATBannerView;
-import com.anythink.core.api.ATAdConst;
-import com.anythink.core.api.ATAdInfo;
-import com.anythink.core.api.ATDebuggerConfig;
-import com.anythink.core.api.ATNetworkConfirmInfo;
-import com.anythink.core.api.AdError;
 import com.ijimu.android.ad.AdActivity;
 import com.ijimu.android.game.BeanFactory;
 import com.ijimu.android.game.ContextHolder;
@@ -97,8 +76,9 @@ public class MainActivity extends AdActivity {
 		ViewGroup gamePanel = rootView.findViewById(R.id.game_root);
 		gamePanel.addView(surface);
 		setContentView(rootView);
-//		initBanner(rootView.findViewById(R.id.banner));
-		showInsert();
+//		showBanner(rootView.findViewById(R.id.banner));
+//		showInsert();
+		showReward();
 	}
 	
 	@Override
