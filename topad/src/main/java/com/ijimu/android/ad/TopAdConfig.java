@@ -1,5 +1,8 @@
 package com.ijimu.android.ad;
 
+import static com.anythink.network.chartboost.ChartboostATConst.DEBUGGER_CONFIG.Chartboost_NETWORK;
+import static com.anythink.network.inmobi.InmobiATConst.DEBUGGER_CONFIG.Inmobi_NETWORK;
+
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
@@ -7,6 +10,8 @@ import android.os.Build;
 import android.webkit.WebView;
 
 import com.anythink.core.api.ATAdConst;
+import com.anythink.core.api.ATDebuggerConfig;
+import com.anythink.core.api.ATDeviceUtils;
 import com.anythink.core.api.ATInitConfig;
 import com.anythink.core.api.ATNetworkConfig;
 import com.anythink.core.api.ATSDK;
@@ -15,6 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TopAdConfig {
+
+    public static String TAG = "ijimu_topon";
+
+    public static final String BANNER = "n670cfbda6c587";
+    public static final String REWARD = "n670cfbdb697ab";
+    public static final String INSERT = "n670cfbdae53e7";
 
     public static void init(Application app,String appId,String appKey){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -29,6 +40,7 @@ public class TopAdConfig {
         }
         ATSDK.setNetworkLogDebug(true);
         ATSDK.integrationChecking(app);
+        BaseContext.setContext(app);
 //        ATSDK.deniedUploadDeviceInfo(
 //                DeviceDataInfo.DEVICE_SCREEN_SIZE
 //                , DeviceDataInfo.ANDROID_ID
@@ -56,11 +68,13 @@ public class TopAdConfig {
 
 
         ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
-//        ATSDK.setUseHTTP(true);
-//        ATSDK.init(app, appId, appKey);
-
         ATNetworkConfig atNetworkConfig = getAtNetworkConfig();
         ATSDK.init(app, appId, appKey, atNetworkConfig);
+        if(VersionUtil.isDebug()){
+            ATSDK.setDebuggerConfig(app,ATDeviceUtils.getGaid(),new  ATDebuggerConfig.Builder(Chartboost_NETWORK).build());
+//            ATSDK.setDebuggerConfig(app, ATDeviceUtils.getGaid(), new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
+        }
+
     }
 
 
