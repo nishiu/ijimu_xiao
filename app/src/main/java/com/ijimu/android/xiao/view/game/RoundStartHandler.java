@@ -6,6 +6,7 @@ import com.ijimu.android.game.event.GameEventListener;
 import com.ijimu.android.xiao.ClientConfig;
 import com.ijimu.android.xiao.EventType;
 import com.ijimu.android.xiao.GameWorld;
+import com.ijimu.android.xiao.ad.InsertAction;
 import com.ijimu.android.xiao.domain.Gift;
 import com.ijimu.android.xiao.view.gift.GiftShowAction;
 
@@ -21,7 +22,7 @@ public class RoundStartHandler implements GameEventListener{
 	@Override
 	public void onGameEvent(GameEvent event) {		
 		if(gameWorld.getLevel() != 1) return;
-		if(!ClientConfig.START_GIFT_ENABLED) return;
-		new GiftShowAction(Gift.TYPE_PROPS_5, 1000L, null);
+		if(gameWorld.getLevel() %5 != 0)return;
+		new InsertAction().showInsert();
 	}
 }

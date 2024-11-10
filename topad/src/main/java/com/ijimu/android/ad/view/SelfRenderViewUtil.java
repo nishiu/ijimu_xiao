@@ -1,4 +1,4 @@
-package com.ijimu.android.ad;
+package com.ijimu.android.ad.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,6 +17,7 @@ import com.anythink.nativead.api.ATNativeMaterial;
 import com.anythink.nativead.api.ATNativePrepareExInfo;
 import com.anythink.nativead.api.ATNativePrepareInfo;
 import com.anythink.nativead.unitgroup.api.CustomNativeAd;
+import com.ijimu.android.ad.R;
 
 import java.util.ArrayList;
 import java.util.List;

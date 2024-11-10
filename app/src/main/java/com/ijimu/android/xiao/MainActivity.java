@@ -47,6 +47,8 @@ public class MainActivity extends AdActivity {
 		instance = this;
 		ContextHolder.set(this);
 		UIThread.init();
+		initInsert();
+		initReward();
 		initBeans();
 		initContent();
 		PluginManager.init();
@@ -76,9 +78,7 @@ public class MainActivity extends AdActivity {
 		ViewGroup gamePanel = rootView.findViewById(R.id.game_root);
 		gamePanel.addView(surface);
 		setContentView(rootView);
-//		showBanner(rootView.findViewById(R.id.banner));
-//		showInsert();
-		showReward();
+		showBanner(rootView.findViewById(R.id.banner));
 	}
 	
 	@Override

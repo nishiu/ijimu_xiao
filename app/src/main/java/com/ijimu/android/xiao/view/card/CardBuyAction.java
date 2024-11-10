@@ -1,5 +1,7 @@
 package com.ijimu.android.xiao.view.card;
 
+import android.app.Activity;
+
 import com.ijimu.android.game.BeanFactory;
 import com.ijimu.android.game.domain.PayInfo;
 import com.ijimu.android.game.plugin.PayCallback;

@@ -1,4 +1,4 @@
-package com.ijimu.android.ad;
+package com.ijimu.android.ad.view;
 
 import android.content.Context;
 import android.view.ViewGroup;

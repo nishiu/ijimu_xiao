@@ -6,7 +6,7 @@ public class ClientConfig {
 	
 	public static final boolean MARKET_ENABLED = LocalConfig.get("market_enabled", true);
 	public static final boolean GIFT_AUTO_BUY = LocalConfig.get("gift_auto_buy", false);
-	public static final boolean START_GIFT_ENABLED = LocalConfig.get("start_gift_enabled", true);
+	public static final boolean START_GIFT_ENABLED = LocalConfig.get("start_gift_enabled", false);
 	public static final boolean ROUND_GIFT_ENABLED = LocalConfig.get("round_gift_enabled", true);
 	public static final boolean OWED_GIFT_ENABLED = LocalConfig.get("owed_gift_enabled", false);
 	public static final boolean INIT_GIFT_ENABLED = LocalConfig.get("init_gift_enabled", false);

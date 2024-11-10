@@ -14,11 +14,14 @@ import com.anythink.core.api.ATAdConst;
 import com.anythink.core.api.ATAdInfo;
 import com.anythink.core.api.ATNativeAdCustomRender;
 import com.anythink.core.api.ATNativeAdInfo;
+import com.anythink.core.api.ATShowConfig;
 import com.anythink.core.api.AdError;
 import com.anythink.interstitial.api.ATInterstitialAutoAd;
 import com.anythink.interstitial.api.ATInterstitialAutoLoadListener;
 import com.anythink.rewardvideo.api.ATRewardVideoAutoAd;
 import com.anythink.rewardvideo.api.ATRewardVideoAutoLoadListener;
+import com.ijimu.android.ad.impl.BannerListenerImpl;
+import com.ijimu.android.ad.view.MediationNativeAdUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,36 +51,29 @@ public abstract class AdActivity extends AppCompatActivity {
         atBannerView.loadAd();
     }
 
-    protected void showInsert(){
+    protected void initInsert(){
         ATInterstitialAutoAd.init(this, new String[]{TopAdConfig.INSERT}, new ATInterstitialAutoLoadListener() {
             @Override
             public void onInterstitialAutoLoaded(String s) {
-                ATInterstitialAutoAd.entryAdScenario(TopAdConfig.INSERT, "ijimu_insert");
-                if (ATInterstitialAutoAd.isAdReady(TopAdConfig.INSERT)) {
-                    ATInterstitialAutoAd.show(getActivity(),TopAdConfig.INSERT,null);
-                }
+
             }
 
             @Override
             public void onInterstitialAutoLoadFail(String s, AdError adError) {
-                Log.i(TopAdConfig.TAG,"onInterstitialAutoLoadFail : "+adError.getFullErrorInfo());
+                logInfo("onInterstitialAutoLoadFail : "+adError.getFullErrorInfo());
             }
         });
     }
 
-    protected void showReward(){
+    protected void initReward(){
         ATRewardVideoAutoAd.init(this, new String[]{TopAdConfig.REWARD}, new ATRewardVideoAutoLoadListener() {
             @Override
             public void onRewardVideoAutoLoaded(String s) {
-                ATInterstitialAutoAd.entryAdScenario(TopAdConfig.REWARD,"ijimu_reward");
-                if(ATInterstitialAutoAd.isAdReady(TopAdConfig.REWARD)){
-                    ATInterstitialAutoAd.show(getActivity(),TopAdConfig.REWARD,null);
-                }
             }
 
             @Override
             public void onRewardVideoAutoLoadFail(String s, AdError adError) {
-                Log.i(TopAdConfig.TAG,"onRewardVideoAutoLoadFail : "+adError.getFullErrorInfo());
+                logInfo("onRewardVideoAutoLoadFail : "+adError.getFullErrorInfo());
             }
         });
     }
@@ -101,14 +97,18 @@ public abstract class AdActivity extends AppCompatActivity {
             atBannerView.destroy();
             atBannerView = null;
         }
-    }
-
-    protected AppCompatActivity getActivity(){
-        return this;
+        ATRewardVideoAutoAd.removePlacementId(TopAdConfig.REWARD);
+        ATInterstitialAutoAd.removePlacementId(TopAdConfig.INSERT);
     }
 
     public int dip2px(int dipValue) {
         float scale = getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
+    }
+
+    public void logInfo(String msg){
+        if(VersionUtil.isDebug()){
+            Log.i(TopAdConfig.TAG,msg);
+        }
     }
 }

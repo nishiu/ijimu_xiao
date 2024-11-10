@@ -1,4 +1,4 @@
-package com.ijimu.android.ad;
+package com.ijimu.android.ad.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import com.anythink.core.api.IATAdvertiserInfoOperate;
 import com.anythink.core.api.IATThirdPartyMaterial;
 import com.anythink.nativead.api.ATNativeImageView;
 import com.anythink.nativead.unitgroup.api.CustomNativeAd;
+import com.ijimu.android.ad.R;
 
 import java.util.ArrayList;
 import java.util.List;

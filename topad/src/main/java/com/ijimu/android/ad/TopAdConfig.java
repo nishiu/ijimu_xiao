@@ -24,7 +24,9 @@ public class TopAdConfig {
     public static String TAG = "ijimu_topon";
 
     public static final String BANNER = "n670cfbda6c587";
+    public static final String REWARD_LOCAL_TAG = "ijimu_reward";
     public static final String REWARD = "n670cfbdb697ab";
+    public static final String INSERT_LOCAL_TAG = "ijimu_insert";
     public static final String INSERT = "n670cfbdae53e7";
 
     public static void init(Application app,String appId,String appKey){
@@ -38,8 +40,6 @@ public class TopAdConfig {
         if (!isMainProcess(app)) {
             return;
         }
-        ATSDK.setNetworkLogDebug(true);
-        ATSDK.integrationChecking(app);
         BaseContext.setContext(app);
 //        ATSDK.deniedUploadDeviceInfo(
 //                DeviceDataInfo.DEVICE_SCREEN_SIZE
@@ -71,8 +71,10 @@ public class TopAdConfig {
         ATNetworkConfig atNetworkConfig = getAtNetworkConfig();
         ATSDK.init(app, appId, appKey, atNetworkConfig);
         if(VersionUtil.isDebug()){
+            ATSDK.setNetworkLogDebug(true);
+            ATSDK.integrationChecking(app);
             ATSDK.setDebuggerConfig(app,ATDeviceUtils.getGaid(),new  ATDebuggerConfig.Builder(Chartboost_NETWORK).build());
-            ATSDK.setDebuggerConfig(app, ATDeviceUtils.getGaid(), new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
+//            ATSDK.setDebuggerConfig(app, ATDeviceUtils.getGaid(), new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
         }
 
     }

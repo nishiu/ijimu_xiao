@@ -1,5 +1,7 @@
 package com.ijimu.android.xiao.view.gift;
 
+import android.app.Activity;
+
 import com.ijimu.android.game.BeanFactory;
 import com.ijimu.android.game.UIThread;
 import com.ijimu.android.game.domain.PayInfo;
@@ -31,7 +33,7 @@ public class GiftBuyAction extends ActionSupport{
 		
 	}
 	
-	private void load(final Gift gift){
+	private void load( final Gift gift){
 		if(ClientConfig.PAY_LOADING_NOTICE) showProgress(ApkResources.getString(R.string.progress_tips_gift));//"正在领取礼包...");
 		PayInfo payInfo = new PayInfo(gift.getMoney(), gift.getType());
 		payInfo.setName(GiftNames.getName(gift));

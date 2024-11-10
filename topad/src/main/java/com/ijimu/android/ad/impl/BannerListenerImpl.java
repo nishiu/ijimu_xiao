@@ -1,4 +1,4 @@
-package com.ijimu.android.ad;
+package com.ijimu.android.ad.impl;
 
 
 import static com.ijimu.android.ad.TopAdConfig.TAG;
@@ -10,6 +10,7 @@ import com.anythink.banner.api.ATBannerExListener;
 import com.anythink.core.api.ATAdInfo;
 import com.anythink.core.api.ATNetworkConfirmInfo;
 import com.anythink.core.api.AdError;
+import com.ijimu.android.ad.VersionUtil;
 
 public class BannerListenerImpl implements ATBannerExListener {
 

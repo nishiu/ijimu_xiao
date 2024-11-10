@@ -21,7 +21,7 @@ public class AppExitAction extends ActionSupport {
 	public AppExitAction(){
 		ExitPlugin exitPlugin = PluginManager.getPlugin(ExitPlugin.class);
 		if(exitPlugin==null){
-			showConfrim();
+			showConfirm();
 		}else{
 			pluginExit(exitPlugin);
 		}
@@ -41,7 +41,7 @@ public class AppExitAction extends ActionSupport {
 		});
 	}
 	
-	private void showConfrim(){
+	private void showConfirm(){
 		SimpleConfirm.show(	ApkResources.getString(R.string.confirm_tips_exit), new DialogInterface.OnClickListener() {
 //		SimpleConfirm.show(	"您确定要退出游戏吗?", new DialogInterface.OnClickListener() {
 			@Override
