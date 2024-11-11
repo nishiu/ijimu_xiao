@@ -1,7 +1,15 @@
 package com.ijimu.android.ad;
 
+import static com.anythink.network.bigo.BigoATConst.DEBUGGER_CONFIG.BigoAds_NETWORK;
 import static com.anythink.network.chartboost.ChartboostATConst.DEBUGGER_CONFIG.Chartboost_NETWORK;
+import static com.anythink.network.fyber.FyberATConst.DEBUGGER_CONFIG.Fyber_NETWORK;
 import static com.anythink.network.inmobi.InmobiATConst.DEBUGGER_CONFIG.Inmobi_NETWORK;
+import static com.anythink.network.ironsource.IronsourceATConst.DEBUGGER_CONFIG.Ironsource_NETWORK;
+import static com.anythink.network.mintegral.MintegralATConst.DEBUGGER_CONFIG.Mintegral_NETWORK;
+import static com.anythink.network.pangle.PangleATConst.DEBUGGER_CONFIG.Pangle_NETWORK;
+import static com.anythink.network.startapp.StartAppATConst.DEBUGGER_CONFIG.StartApp_NETWORK;
+import static com.anythink.network.unityads.UnityAdsATConst.DEBUGGER_CONFIG.UnityAds_NETWORK;
+import static com.anythink.network.vungle.VungleATConst.DEBUGGER_CONFIG.Vungle_NETWORK;
 
 import android.app.ActivityManager;
 import android.app.Application;
@@ -74,8 +82,18 @@ public class TopAdConfig {
         if(VersionUtil.isDebug()){
             ATSDK.setNetworkLogDebug(true);
             ATSDK.integrationChecking(app);
-            ATSDK.setDebuggerConfig(app,ATDeviceUtils.getGaid(),new  ATDebuggerConfig.Builder(Chartboost_NETWORK).build());
-//            ATSDK.setDebuggerConfig(app, ATDeviceUtils.getGaid(), new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
+            Context context = app;
+            String GAID = ATDeviceUtils.getGaid();
+            ATSDK.setDebuggerConfig(context,GAID,new  ATDebuggerConfig.Builder(Chartboost_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Mintegral_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(UnityAds_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(StartApp_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Fyber_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Pangle_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Vungle_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Ironsource_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(BigoAds_NETWORK).build());
+            ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
         }
     }
 

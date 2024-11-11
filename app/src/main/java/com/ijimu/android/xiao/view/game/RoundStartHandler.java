@@ -28,17 +28,11 @@ public class RoundStartHandler implements GameEventListener{
 		if(gameWorld.getLevel() == 1) return;
 		if(gameWorld.getLevel() == ClientConfig.APPRAISE_LEVEL){
 			UIThread.post(() -> {
-				if(VersionUtil.isDebug()){
-					SimpleNotice.show("评价系统展示");
-				}
 				appraisePlugin.showGPAppraise(null);
 			});
 		}
 		if(gameWorld.getLevel() % ClientConfig.INSERT_AD_LEVEL == 0){
 			UIThread.post(() -> {
-				if(VersionUtil.isDebug()){
-					SimpleNotice.show("插屏广告展示");
-				}
 				new InsertAction().showInsert();
 			});
 		}
