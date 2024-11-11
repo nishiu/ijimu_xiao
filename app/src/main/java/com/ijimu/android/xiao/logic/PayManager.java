@@ -1,7 +1,5 @@
 package com.ijimu.android.xiao.logic;
 
-import android.app.Activity;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,10 +9,9 @@ import com.ijimu.android.game.domain.PayInfo;
 import com.ijimu.android.game.event.GameEvent;
 import com.ijimu.android.game.plugin.PayCallback;
 import com.ijimu.android.game.plugin.PayPlugin;
-import com.ijimu.android.game.plugin.PluginManager;
 import com.ijimu.android.xiao.EventType;
 import com.ijimu.android.xiao.GameWorld;
-import com.ijimu.android.xiao.ad.RewardPay;
+import com.ijimu.android.xiao.plugin.RewardPayPlugin;
 
 public class PayManager {
 
@@ -57,7 +54,7 @@ public class PayManager {
 	}
 
 	private void initPlugin() {
-		payPlugin = BeanFactory.getBean(RewardPay.class);
+		payPlugin = BeanFactory.getBean(RewardPayPlugin.class);
 		if(payPlugin!=null) payPlugin.init();
 		else logger.warn("can not find pay plugin: "+PayPlugin.class.getSimpleName());
 	}

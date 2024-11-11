@@ -1,4 +1,4 @@
-package com.ijimu.android.xiao.ad;
+package com.ijimu.android.xiao.plugin;
 
 import com.ijimu.android.ad.handle.InsertHandler;
 import com.ijimu.android.xiao.MainActivity;

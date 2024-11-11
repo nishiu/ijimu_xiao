@@ -1,5 +1,7 @@
 package com.ijimu.android.xiao;
 
+import static com.ijimu.android.xiao.Constants.PRIVACY_AGREE;
+
 import java.util.Collection;
 
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import android.view.ViewParent;
 import android.widget.RelativeLayout;
 
 import com.ijimu.android.ad.AdActivity;
+import com.ijimu.android.ad.TopAdConfig;
 import com.ijimu.android.game.BeanFactory;
 import com.ijimu.android.game.ContextHolder;
 import com.ijimu.android.game.UIThread;
@@ -22,8 +25,10 @@ import com.ijimu.android.game.engine.GameScheduler;
 import com.ijimu.android.game.plugin.ActivityResultPlugin;
 import com.ijimu.android.game.plugin.PluginManager;
 import com.ijimu.android.game.plugin.TrackPlugin;
+import com.ijimu.android.game.util.LocalStorage;
 import com.ijimu.android.xiao.logic.LogicModule;
 import com.ijimu.android.xiao.music.MusicModule;
+import com.ijimu.android.xiao.plugin.AppraisePlugin;
 import com.ijimu.android.xiao.view.DisplayRoot;
 import com.ijimu.android.xiao.view.action.AppExitAction;
 
@@ -37,6 +42,7 @@ public class MainActivity extends AdActivity {
 
 	private GameWorld gameWorld;
 	private Collection<TrackPlugin> trackers;
+	private AppraisePlugin appraisePlugin;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -46,7 +52,7 @@ public class MainActivity extends AdActivity {
 		logger.info("onCreate");
 		instance = this;
 		ContextHolder.set(this);
-		UIThread.init();
+		TopAdConfig.setPrivacyConfig(this, BeanFactory.getBean(LocalStorage.class).get(PRIVACY_AGREE,true));
 		initInsert();
 		initReward();
 		initBeans();
@@ -68,6 +74,8 @@ public class MainActivity extends AdActivity {
 		gameWorld = BeanFactory.getBean(GameWorld.class);
 		BeanFactory.getBean(GameScheduler.class).setGameWorld(gameWorld);
 		trackers = PluginManager.getPlugins(TrackPlugin.class);
+		appraisePlugin = BeanFactory.getBean(AppraisePlugin.class);
+		appraisePlugin.preLoadGPAppraise();
 	}
 
 	private void initContent() {

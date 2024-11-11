@@ -14,6 +14,7 @@ import com.anythink.core.api.ATDebuggerConfig;
 import com.anythink.core.api.ATDeviceUtils;
 import com.anythink.core.api.ATInitConfig;
 import com.anythink.core.api.ATNetworkConfig;
+import com.anythink.core.api.ATPrivacyConfig;
 import com.anythink.core.api.ATSDK;
 
 import java.util.ArrayList;
@@ -76,7 +77,10 @@ public class TopAdConfig {
             ATSDK.setDebuggerConfig(app,ATDeviceUtils.getGaid(),new  ATDebuggerConfig.Builder(Chartboost_NETWORK).build());
 //            ATSDK.setDebuggerConfig(app, ATDeviceUtils.getGaid(), new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
         }
+    }
 
+    public static void setPrivacyConfig(Context context,boolean enabled){
+        ATSDK.setGDPRUploadDataLevel(context,enabled ? ATSDK.PERSONALIZED : ATSDK.NONPERSONALIZED);
     }
 
 

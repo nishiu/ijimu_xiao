@@ -1,4 +1,4 @@
-package com.ijimu.android.xiao.ad;
+package com.ijimu.android.xiao.plugin;
 
 import android.app.Activity;
 import android.widget.Toast;
@@ -9,8 +9,9 @@ import com.ijimu.android.game.domain.PayInfo;
 import com.ijimu.android.game.plugin.PayCallback;
 import com.ijimu.android.game.plugin.PayPlugin;
 import com.ijimu.android.xiao.MainActivity;
+import com.ijimu.android.xiao.R;
 
-public class RewardPay implements PayPlugin {
+public class RewardPayPlugin implements PayPlugin {
 
     private Activity activity;
     private RewardHandler rewardHandler;
@@ -26,14 +27,14 @@ public class RewardPay implements PayPlugin {
             rewardHandler.showAd(activity, success -> {
                 if(success){
                     callback.onSuccess(payInfo);
-                    Toast.makeText(ContextHolder.get(),"get gift success",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ContextHolder.get(),activity.getString(R.string.notice_gift_success),Toast.LENGTH_LONG).show();
                 }else{
                     callback.onCancel(payInfo);
-                    Toast.makeText(ContextHolder.get(),"cancel",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ContextHolder.get(),activity.getString(R.string.notice_gift_cancel),Toast.LENGTH_LONG).show();
                 }
             });
         }else{
-            Toast.makeText(ContextHolder.get(),"No ads, please watch later",Toast.LENGTH_LONG).show();
+            Toast.makeText(ContextHolder.get(),activity.getString(R.string.no_ads_alert),Toast.LENGTH_LONG).show();
             callback.onError(payInfo,null);
         }
 

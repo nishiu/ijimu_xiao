@@ -7,6 +7,7 @@ import com.ijimu.android.xiao.ClientConfig;
 import com.ijimu.android.xiao.EventType;
 import com.ijimu.android.xiao.GameWorld;
 import com.ijimu.android.xiao.domain.Gift;
+import com.ijimu.android.xiao.plugin.AppraisePlugin;
 import com.ijimu.android.xiao.view.card.CardDialog;
 import com.ijimu.android.xiao.view.card.CardListener;
 import com.ijimu.android.xiao.view.gift.GiftListener;

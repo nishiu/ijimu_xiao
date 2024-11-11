@@ -26,4 +26,10 @@
     <string name="gift_name_card_draw">Flip Gift Pack</string>
     <string name="gift_name_owed">Props Pack</string>
     <string name="gift_name">Gift Pack</string>
+    <string name="privacy_policy_label">privacy policy</string>
+
+    <string name="no_ads_alert">No ads, please try it later</string>
+    <string name="gift_video_ad_watch_alert">Get a gift pack after watching an ad video</string>
+    <string name="gift_video_ad_watch_conform_title">watch</string>
+    <string name="gift_video_ad_watch_cancel_title">not now</string>
 </resources>

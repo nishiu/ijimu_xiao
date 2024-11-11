@@ -2,6 +2,9 @@ package com.ijimu.android.xiao;
 
 public interface Constants {
 
+	public static final String PRIVACY_AGREE = "privacy_agree";
+	public static final String APPRAISE = "ijimu_appraise";
+
 	public static final int SCREEN_WIDTH = 480;
 	public static final int SCREEN_HEIGHT = 800;
 	

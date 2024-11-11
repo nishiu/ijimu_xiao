@@ -8,6 +8,7 @@ import com.ijimu.android.game.BeanFactory;
 import com.ijimu.android.game.dialog.SimpleConfirm;
 import com.ijimu.android.xiao.ClientConfig;
 import com.ijimu.android.xiao.MainActivity;
+import com.ijimu.android.xiao.R;
 import com.ijimu.android.xiao.domain.Gift;
 import com.ijimu.android.xiao.logic.GiftManager;
 import com.ijimu.android.xiao.view.action.ActionSupport;
@@ -23,11 +24,11 @@ public class GiftShowAction extends ActionSupport{
 //		}else{
 //			GiftDialog.show(gift, delay, listener);
 //		}
-		SimpleConfirm.show("Get a gift pack after watching an ad video", new DialogInterface.OnClickListener() {
+		SimpleConfirm.show(MainActivity.getInstance().getString(R.string.gift_video_ad_watch_alert), new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialogInterface, int i) {
 				new GiftBuyAction(gift,listener);
 			}
-		},null,"watch","not now");
+		},null,MainActivity.getInstance().getString(R.string.gift_video_ad_watch_conform_title),MainActivity.getInstance().getString(R.string.gift_video_ad_watch_cancel_title));
 	}
 }
