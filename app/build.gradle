@@ -5,7 +5,7 @@ android {
         shl {
             keyAlias 'shl.android'
             keyPassword 'shl.android'
-            def storePath = "C:/AndroidWorkspace/shl.keystore"
+            def storePath = "../shl_upload.jks"
             storeFile file(storePath)
             storePassword 'shl.android'
         }
@@ -17,7 +17,7 @@ android {
         minSdkVersion 26
         targetSdkVersion 34
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
@@ -50,13 +50,13 @@ android {
                 }
             }
         }
-        debug {
-//            ndk {
-//                // 设置支持的SO库架构
-//                abiFilters 'arm64-v8a'
-//            }
-            signingConfig = signingConfigs.shl
-        }
+//        debug {
+////            ndk {
+////                // 设置支持的SO库架构
+////                abiFilters 'arm64-v8a'
+////            }
+//            signingConfig = signingConfigs.shl
+//        }
     }
     flavorDimensions "channel"
 
@@ -78,6 +78,7 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    implementation 'com.google.android.play:review:2.0.2'
 
     //Helium
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'

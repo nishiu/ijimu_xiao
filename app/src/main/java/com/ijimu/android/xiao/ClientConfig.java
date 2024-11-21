@@ -7,6 +7,7 @@ public class ClientConfig {
 	public static final int INSERT_AD_LEVEL = LocalConfig.get("insert_ad_level",2);//插屏每2关展示一次,注意和评价系统隔2个大小的关卡间隔
 	public static final int APPRAISE_LEVEL = LocalConfig.get("appraise_level",3);//第三关展示评价系统,注意不用和插屏广告间隔太近
 
+
 	public static final boolean MARKET_ENABLED = LocalConfig.get("market_enabled", true);
 	public static final boolean GIFT_AUTO_BUY = LocalConfig.get("gift_auto_buy", false);
 	public static final boolean START_GIFT_ENABLED = LocalConfig.get("start_gift_enabled", false);

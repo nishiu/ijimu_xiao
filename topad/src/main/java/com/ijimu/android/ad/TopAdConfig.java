@@ -79,7 +79,7 @@ public class TopAdConfig {
         ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
         ATNetworkConfig atNetworkConfig = getAtNetworkConfig();
         ATSDK.init(app, appId, appKey, atNetworkConfig);
-        if(VersionUtil.isDebug()){
+//        if(VersionUtil.isDebug()){
             ATSDK.setNetworkLogDebug(true);
             ATSDK.integrationChecking(app);
             Context context = app;
@@ -94,7 +94,7 @@ public class TopAdConfig {
             ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Ironsource_NETWORK).build());
             ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(BigoAds_NETWORK).build());
             ATSDK.setDebuggerConfig(context, GAID, new ATDebuggerConfig.Builder(Inmobi_NETWORK).build());
-        }
+//        }
     }
 
     public static void setPrivacyConfig(Context context,boolean enabled){
